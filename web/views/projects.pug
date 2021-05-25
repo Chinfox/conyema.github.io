@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  section.container
+    .row.row-cols-1.row-cols-sm-2.row-cols-lg-3
+      each project in projects
+        .col
+          div(class="card")
+            //- img(src= project.poster class="card-img-top" alt="")
+            img(src="/images/house.jpg" class="card-img-top" alt="")
+            div(class="card-body")
+              h5(class="card-title title")= project.title
+              p(class="card-text")= project.description
+            div(class="card-footer")
+              button(id="view-btn" class="btn") View
+

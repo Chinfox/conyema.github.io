@@ -1,0 +1,64 @@
+{
+  "about": {
+    "name": "Owi Lion",
+    "profession": "Hunter | Spy | Analyst",
+    "picture": "lion.jpg",
+    "logo": "sample-sec-logo.svg",
+    "cta1": "Talk to me",
+    "location": "Abuja Nigeria",
+    "email": "hello@me.com",
+    "phone": "0705147-000",
+    "linkedin": "#",
+    "instagram": "#",
+    "facebook": "#",
+    "twitter": "#",
+    "github": "#"
+  },
+
+  "services": [
+    {
+      "title": "Development",
+      "poster": "sample-sec-logo.svg",
+      "description": "This is a longer card with supporting text below as a natural lead-in to additional content."
+    },
+    {
+      "title": "Marketing",
+      "poster": "sample-sec-logo.svg",
+      "description": "This is a longer card with supporting text below as a natural lead-in to additional content."
+    },
+    {
+      "title": "Facility Management",
+      "poster": "sample-sec-logo.svg",
+      "description": "This is a longer card with supporting text below as a natural lead-in to additional content."
+    },
+    {
+      "title": "Remodelling",
+      "poster": "sample-sec-logo.svg",
+      "description": "This is a longer card with supporting text below as a natural lead-in to additional content."
+    },
+    {
+      "title": "Construction",
+      "poster": "sample-sec-logo.svg",
+      "description": "This is a longer card with supporting text below as a natural lead-in to additional content."
+    }
+  ],
+
+  "projects": [],
+
+  "testimonials": [
+    {
+      "author": "Peter Pan",
+      "comment": "A great gial"
+    },
+    {
+      "author": "Benny Ben",
+      "comment": "A great writer"
+    },
+    {
+      "author": "Benny Ben",
+      "comment": "A great writer"
+    }    
+  ],
+
+  "cta": {}
+}
