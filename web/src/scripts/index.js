@@ -1,34 +1,49 @@
-const professionText = document.getElementById("about-profession").innerText;
-const aboutMe = document.getElementById("profession");
-const headerNav = document.getElementById("site-header");
-const speed = 30;
-let i = 0;
+const contactForm = document.getElementById('contact-form');
+const statusBox = document.getElementById('status');
 
-function toggleHeaderBg() {
-  if (document.body.scrollTop > 70 || document.documentElement.scrollTop > 70) {
-    // headerNav.classList.remove("header-transparent");
-    headerNav.classList.add("header-transparent");
-  } else {
-    // headerNav.classList.add("header-transparent");
-    headerNav.classList.remove("header-transparent");
-  }
+
+/** Method for showing notification message**/
+const displayStatus = (status, { sender }) => {
+  let txtSuccess = `${sender}, thanks for the message. I will reply as soon as possible`;
+  let txtFailure = "Unable to send message. Please Check network connection and retry";
+  let text = status === "success" ? txtSuccess : txtFailure;
+
+  statusBox.textContent = text;
+  statusBox.classList.toggle("d-none");
+
+  setTimeout(() => {
+		statusBox.classList.toggle("d-none");
+		statusBox.textContent = "";
+  }, 8000);
 }
 
-function typeWriter() {
-  if (i < professionText.length) {
-    aboutMe.innerHTML += professionText.charAt(i);
-    i++;
-    setTimeout(typeWriter, speed);
-  }
-}
+// contactForm.addEventListener('submit', sendMessage);
 
-window.onscroll = function() {
-  toggleHeaderBg()
+contactForm.onsubmit = async (event) => {
+  event.preventDefault();
+  const url = '/message';
+  /**
+   *  Data Formats: Multipart, JSON and Search Parameters 
+   */
+  const formData = new FormData(event.target);
+  // const jsonData = JSON.stringify(Object.fromEntries(formData));
+  const searchParams = new URLSearchParams(formData);
+  
+  // console.log("json: ", jsonData);
+  // console.log("params: ", searchParams);
+
+  let response = await fetch(url, {
+    method: 'POST',
+    // body: jsonData,
+    body: searchParams,
+    // headers: {
+    //   "Content-Type": "application/json",
+    // }
+  });
+
+  // console.log(data);
+  let { status, data } = await response.json();
+  
+  displayStatus(status, data);
+  contactForm.reset();
 };
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   //registerServiceWorker();
-//   typeWriter();
-// });
-
-typeWriter();

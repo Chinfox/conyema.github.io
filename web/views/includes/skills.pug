@@ -1,0 +1,9 @@
+// skills
+section(id="skills" class="section")
+  h2.title.theme-bg
+      span    SKills
+
+  .container-fluid.container-md
+    div(class="row row-cols-1 gy-5")
+      each skill in skills
+        +listCard(skill)

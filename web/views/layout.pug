@@ -1,50 +1,38 @@
 doctype html
 html(lang="en")
   head
-    meta(charset="utf-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
-    meta(name="description" content="A personal webpage.")
-    link(rel="stylesheet", href="/styles/bootstrap.min.css")
-    link(rel='stylesheet', href='/styles/index.css')
-    title= `${about.name} - ${title}`
-  body
+    meta( charset="utf-8" )
+    meta( name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" )
+    title= title
+    meta( name="description" content="My resume webpage" )
+
+    // build:css /styles/index.min.css
+    link( rel='stylesheet', href='/styles/bootstrap.css')
+    link( rel='stylesheet', href='/styles/index.css'  )
+    // endbuild
+
+  //- body.grid-bg
+  body.grid-md-bg
+
+    // Skip to main
     a(class="visually-hidden-focusable" href="#main-content") Skip to main content
 
+    // Site Header
+    //- header(id="site-header" class="site-header fixed-top" role="banner")
+    //-   block header
     header(id="site-header" class="site-header fixed-top" role="banner")
       include ./includes/top-nav.pug
     
-    div(id="side-nav" class="offcanvas offcanvas-start" tabindex="-1" aria-labelledby="menuLabel")
-      div(class="offcanvas-header")
-        h5(id="menuLabel" class="offcanvas-title")    Menu
-        button(class="btn text-light" type="button" data-bs-dismiss="offcanvas" aria-label="Close")
-          <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-            <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
-          </svg>
-      div( class="offcanvas-body")
-        ul(class="navbar-nav text-center")
-          li.nav-item
-            a(class="nav-link sidebar-link active" href="/") Home
-          li.nav-item
-            a(class="nav-link sidebar-link" href="#services") Services
-          li.nav-item
-            a(class="nav-link sidebar-link" href="#projects") Portfolio
-          li.nav-item
-            a(class="nav-link sidebar-link" href="#contact") Contact
-   
+    //- // Side Navigation
+    //- include ./includes/sidenav.pug
     
+    // Main Content
     main(id="main-content" class="site-main" role="main")
       block content
 
-    div(class="footer-deco")
-      div(class="footer-deco-inner")
-    
-    footer(id="site-footer" class="site-footer" role="contentinfo")
-      //- +footer(about)
-      include ./includes/footer-nav
-    
-      //- include ./includes/bubble-anim.pug
+    // Scripts
+    //- script(src="/scripts/bootstrap.bundle.min.js" defer)
 
-    script(src="/scripts/bootstrap.bundle.min.js")
+    // build:js /scripts/index.min.js defer
     script(src="/scripts/index.js")
-    //- script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
-    //- script(src="/javascripts/bootstrap.bundle.min.js")
+    // endbuild

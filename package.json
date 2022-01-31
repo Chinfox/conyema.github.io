@@ -1,14 +1,21 @@
 {
   "name": "conyema.github.io",
   "version": "1.0.0",
-  "description": "personal website",
+  "description": "personal resume website",
   "engines": {
     "node": "12.18.2"
   },
   "main": "app.js",
   "scripts": {
+    "build": "gulp",
+    "start": "set DEBUG=app:* & nodemon app.js",
+    "stop": "pm2 stop owi",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d web/dist",
+    "dev": "npm-run-all --parallel watch serve-dev",
+    "serve-dev": "set DEBUG=app:* & nodemon app-dev.js",
     "lint": "eslint .",
-    "dev": "set DEBUG=app:* & nodemon ./dev-server.js",
+    "watch": "gulp watchFiles",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,11 +37,30 @@
     "helmet": "^4.6.0",
     "http-errors": "^1.8.0",
     "morgan": "^1.10.0",
-    "pm2": "^4.5.6",
+    "pm2": "^5.1.0",
     "pug": "^3.0.2"
   },
   "devDependencies": {
+    "del": "^6.0.0",
     "eslint": "^7.25.0",
-    "nodemon": "^2.0.7"
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-postcss": "^9.0.0",
+    "gulp-pug": "^5.0.0",
+    "gulp-purgecss": "^4.0.3",
+    "gulp-rename": "^2.0.0",
+    "gulp-replace": "^1.1.3",
+    "gulp-responsive-images": "0.0.4",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify-es": "^2.0.0",
+    "gulp-useref": "^5.0.0",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.3.6",
+    "postcss-custom-properties": "^11.0.0"
   }
 }
