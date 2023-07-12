@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+} */
+
+:root {
+  --foreground-rgb: 237, 237, 237;
+  --background-start-rgb: 15, 23, 42;
+  --background-end-rgb: 0, 0, 0;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --foreground-rgb: 18, 18, 18;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+@layer components {
+
+  /* START: General styles */
+  .main-nav {
+    @apply fixed bottom-0 left-0 w-full bg-black text-white py-2;
+  }
+
+  /* .nav-link {
+    @apply flex flex-col rounded-full bg-white/5 items-center space-y-1 text-gray-300 mx-4 p-4;
+  } */
+
+  .nav-link {
+    @apply flex flex-col items-center space-y-1 text-gray-300 mx-4 p-4;
+  }
+
+  .nav-home-link {
+    @apply rounded-full bg-white/10;
+  }
+
+  .nav-icon {
+    @apply text-2xl;
+  }
+
+  /* .link-icon {
+    @apply text-4xl;
+  } */
+
+  .page-content {
+    @apply min-h-screen overflow-hidden rounded-2xl;
+  }
+
+  .section {
+    @apply py-20;
+  }
+
+  .card {
+    @apply flex flex-col max-w-[450px] w-full justify-between bg-white mx-auto text-center p-6 rounded-3xl shadow-md;
+  }
+
+  .btn-dark {
+    /* @apply bg-white/10 text-gray-300 px-3 py-2 text-sm rounded-md; */
+    @apply bg-gray-900 text-gray-100 ring-gray-700 px-2.5 py-1.5 my-5 text-sm font-semibold shadow-sm rounded-md ring-1 ring-inset;
+  }
+
+  .btn-light {
+    /* @apply rounded-md bg-white px-2.5 py-1.5 my-5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50; */
+    @apply bg-gray-100 text-gray-900 ring-gray-300 px-2.5 py-1.5 my-5 text-sm font-semibold shadow-sm rounded-md ring-1 ring-inset;
+    /* @apply bg- text-gray-900 ring-1 ring-gray-300 ring-inset font-semibold px-3 py-2 border border-gray-400 rounded shadow-sm; */
+  }
+
+  .form-label-dark {
+    @apply block mb-2 text-sm font-medium text-white;
+  }
+
+  .form-text-dark {
+    /* @apply ml-2 text-sm font-medium text-gray-300; */
+    @apply block ml-2 text-sm font-medium text-gray-400;
+  }
+
+  .form-input-dark {
+    @apply bg-white/5 border-0 placeholder-gray-400 text-gray-300 text-sm rounded-md block w-full px-3 py-1.5;
+  }
+
+  .form-radio-dark {
+    @apply bg-gray-700 border-white/10 w-4 h-4 accent-yellow-700;
+  }
+
+  .form-select-dark {
+    @apply bg-gray-900/80 border-0 placeholder-gray-400 text-gray-300 text-sm rounded-md block w-full px-3 py-1.5;
+  }
+
+  /* END: General styles */
+
+}
