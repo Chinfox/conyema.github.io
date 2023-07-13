@@ -1,0 +1,23 @@
+mixin displayCard(item)
+  .col
+    div(class="card display-card mx-auto border-0 h-100")
+      div(class="card-header bg-transparent p-0 border-0")
+        img(
+          src=`/assets/images/${item.poster}`
+          class="img-thumbnail p-2"
+          alt=item.title
+          width="300"
+          height="300"
+          loading="lazy"
+        )
+
+      div(class="card-body")
+        h3(class="theme")
+          span    #{item.title}
+        p(class="card-text muted")= item.description
+        div.text-center
+          a(class="btn btn-main" href=item.link.demo target="_blank")   View
+          a(class="btn btn-main" href=item.link.repo target="_blank")   Repo
+
+      div(class="card-footer theme border-0")
+        p(class="card-text muted")= item.tags

@@ -1,0 +1,38 @@
+doctype html
+html(lang="en")
+  head
+    meta( charset="utf-8" )
+    meta( name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" )
+    title= title
+    meta( name="description" content="My resume webpage" )
+
+    // build:css /styles/index.min.css
+    link( rel='stylesheet', href='/styles/bootstrap.css')
+    link( rel='stylesheet', href='/styles/index.css'  )
+    // endbuild
+
+  //- body.grid-bg
+  body.grid-md-bg
+
+    // Skip to main
+    a(class="visually-hidden-focusable" href="#main-content") Skip to main content
+
+    // Site Header
+    //- header(id="site-header" class="site-header fixed-top" role="banner")
+    //-   block header
+    header(id="site-header" class="site-header fixed-top" role="banner")
+      include ./includes/top-nav.pug
+    
+    //- // Side Navigation
+    //- include ./includes/sidenav.pug
+    
+    // Main Content
+    main(id="main-content" class="site-main" role="main")
+      block content
+
+    // Scripts
+    //- script(src="/scripts/bootstrap.bundle.min.js" defer)
+
+    // build:js /scripts/index.min.js defer
+    script(src="/scripts/index.js")
+    // endbuild

@@ -1,0 +1,35 @@
+nav(class="navbar navbar-expand-md p-0")
+  
+  // Mobile(side) navigation toggle
+  //- button(class="navbar-toggler theme" type="button" data-bs-toggle="offcanvas" data-bs-target="#side-nav" aria-controls="side-nav" title="Open Menu")
+    <svg class="bi" width="2em" height="2em" viewBox="0 0 4.233 3.464"><defs><radialGradient id="c" cx="87.879" cy="147.09" r="127.19" gradientTransform="matrix(.01075 .00013 -.00001 .00184 83.549 106.97)" gradientUnits="userSpaceOnUse"><stop stop-color="currentcolor" stop-opacity="0" offset="0"/><stop stop-color="currentcolor" offset="1"/></radialGradient><radialGradient id="b" cx="87.879" cy="84.429" r="98.75" gradientTransform="matrix(.00888 .00026 -.00003 .0021 83.714 105.57)" gradientUnits="userSpaceOnUse" xlink:href="#a"/><radialGradient id="d" cx="87.879" cy="209.74" r="98.75" gradientTransform="matrix(.01114 .00018 -.00002 .00224 83.516 108.23)" gradientUnits="userSpaceOnUse" xlink:href="#a"/><linearGradient id="a"><stop stop-color="currentcolor" stop-opacity="0" offset="0"/><stop stop-color="currentcolor" offset="1"/></linearGradient></defs><g fill="none" stroke-linecap="round" stroke-width=".518" paint-order="stroke markers fill"><path d="M83.101 105.78h2.78" stroke="url(#b)" transform="translate(-82.375 -105.52)"/><path d="M82.638 107.25h3.708" stroke="url(#c)" transform="translate(-82.375 -105.52)"/><path d="M83.101 108.72h2.78" stroke="url(#d)" transform="translate(-82.375 -105.52)"/></g></svg>
+  .m-auto
+    a(class="navbar-brand d-flex flex-column text-center  theme" href="/")
+      h1.mb-0  #{title}
+      span.muted Full Stack Developer
+
+nav.theme-bg.mt-2
+  ul(class="nav flex-row justify-content-evenly")
+      li.nav-item
+        a(class="nav-link header-link" href="#about") About
+      li.nav-item
+        a(class="nav-link header-link" href="#skills") Skills
+      li.nav-item
+        a(class="nav-link header-link" href="#portfolio") Portfolio
+      li.nav-item
+        a(class="nav-link header-link" href="#education") Education
+      li.nav-item
+        a(class="nav-link header-link" href="#contact") Contact
+
+  //- // Mobile(side) navigation
+  //- nav(id="side-nav" class="offcanvas offcanvas-start" tabindex="-1" aria-labelledby="menuLabel")
+  //-   div( class="offcanvas-body")
+  //-     ul(class="navbar-nav")
+  //-       li.nav-item
+  //-         a(class="link sidebar-link" href="#about") About
+  //-       li.nav-item
+  //-         a(class="link sidebar-link" href="#skills") Skills
+  //-       li.nav-item
+  //-         a(class="link sidebar-link" href="#portfolio") Portfolio
+  //-       li.nav-item
+  //-         a(class="link sidebar-link" href="#contact") Contact
