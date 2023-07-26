@@ -24,7 +24,7 @@ const projects = new SiteData().projects
 
 
 
-const ProjectsSection = () => {
+const ProjectSection = () => {
 
   return (
     <section id='projects' className="bg-gray-100 text-teal-950 py-20">
@@ -43,4 +43,4 @@ const ProjectsSection = () => {
   );
 };
 
-export default ProjectsSection;
+export default ProjectSection;
