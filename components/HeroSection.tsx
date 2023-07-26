@@ -10,12 +10,14 @@ const HeroSection = () => {
             Chinedum Onyema
           </h1>
           <p className="text-lg md:text-2xl text-gray-300 mb-10 text-center">
-            I am a full-stack developer with a passion 
-            for data science and engineering, passionate about building 
-            amazing web experiences and robust, data-driven 
-            applications.
+
+            A versatile Data Scientist with 3+ years of experience in software development
+            and skills required to develop maintainable, efficient, and scalable data products. I am
+            eager to leverage statistical and machine learning techniques to produce valuable insights,
+            drive predictive modeling initiatives, and deliver actionable solutions that aid business growth and data-driven decision-making.
+
           </p>
-          
+
           {/* <a href="#about" className="btn-light max-w-fit">Learn More</a> */}
 
           <SocialIcons />
