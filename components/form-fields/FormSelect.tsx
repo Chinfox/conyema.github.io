@@ -1,4 +1,16 @@
-const FormSelect = ({ title, name, options }: { title: string, name: string, options: [] }) => {
+interface Option {
+  text: string;
+  value: string;
+}
+
+interface Select {
+  title: string;
+  name: string;
+  options?: Option[];
+}
+
+function FormSelect({ title, name, options }: Select) {
+
   return (
 
     <div className="mb-6">
@@ -11,13 +23,13 @@ const FormSelect = ({ title, name, options }: { title: string, name: string, opt
         className="form-select-dark"
         required
       >
-        {options.map(({value, text}, index) => (
+        {options && options.map(({ value, text }, index) => (
           <option key={index} value={value}> {text} </option>
         ))}
       </select>
     </div>
 
   );
-};
+}
 
 export default FormSelect;

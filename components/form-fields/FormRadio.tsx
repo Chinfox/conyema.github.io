@@ -1,12 +1,25 @@
-const FormRadio = ({ title, name, type, options }: { title: string, name: string, type: string, options: [] }) => {
-  
+interface Option {
+  text: string;
+  value: string;
+}
+
+interface Radio {
+  title: string;
+  name: string;
+  type: string;
+  options?: Option[];
+}
+
+
+const FormRadio = ({ title, name, type, options }: Radio) => {
+
   return (
 
     <div className="mb-6">
       <span className="form-label-dark">{title}</span>
       <div className="flex items-center space-x-4">
-        {options.map(({value, text}, index) => (
-          <label htmlFor={value}  key={index} className="flex items-center">
+        {options && options.map(({ value, text }, index) => (
+          <label htmlFor={value} key={index} className="flex items-center">
             <input
               type={type}
               id={value}

@@ -1,5 +1,12 @@
-const FormInput = ({ title, name, type }: { title: string, name: string, type: string }) => {
-  
+interface Input {
+  title: string;
+  name: string;
+  type: string;
+}
+
+
+const FormInput = ({ title, name, type }: Input) => {
+
   return (
 
     <div className="mb-6">
