@@ -5,7 +5,7 @@ const SocialIcons = () => {
   const socialLinks = [
     {
       name: 'LinkedIn',
-      url: 'https://www.linkedln.com/in/conyema',
+      url: 'https://www.linkedin.com/in/conyema/',
       icon: FaLinkedin,
     },
     {
