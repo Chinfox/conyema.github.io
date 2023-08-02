@@ -4,184 +4,185 @@ import React, { useState, FormEvent } from 'react';
 
 import { FormSelect, FormInput, FormRadio } from './form-fields';
 import { getAcctPredction } from '@/utils';
+import apiServer from '@/config/index'
 
 
 const formFields = [
   {
-    title: 'Age', 
+    title: 'Age',
     name: "age",
     type: "number"
   },
   {
-    title: 'Household Size', 
+    title: 'Household Size',
     name: "householdSize",
     type: "number"
   },
   {
-    title: 'Gender', 
+    title: 'Gender',
     name: "gender",
     type: "radio",
     options: [
       {
         text: "Male",
         value: "Male"
-      }, 
+      },
       {
-        text:"Female",
+        text: "Female",
         value: "Female"
       }
     ]
   },
   {
-    title: 'Location', 
+    title: 'Location',
     name: "locationType",
     type: "radio",
     options: [
       {
         text: "Urban",
         value: "Urban"
-      }, 
+      },
       {
-        text:"Rural",
+        text: "Rural",
         value: "Rural"
       }
     ]
   },
   {
-    title: 'Cellphone Access', 
+    title: 'Cellphone Access',
     name: "cellphoneAccess",
     type: "radio",
     options: [
       {
         text: "Yes",
         value: "Yes"
-      }, 
+      },
       {
-        text:"No",
+        text: "No",
         value: "No"
       }
     ]
   },
   {
-    title: 'Relationship with head of household', 
+    title: 'Relationship with head of household',
     name: "relationshipWithHead",
     type: "select",
     options: [
       {
         text: "Head of Household",
         value: "Head of Household"
-      }, 
+      },
       {
-        text:"Spouse",
+        text: "Spouse",
         value: "Spouse"
       },
       {
         text: "Child",
         value: "Child"
-      }, 
+      },
       {
-        text:"Parent",
+        text: "Parent",
         value: "Parent"
-      }, 
+      },
       {
-        text:"Non-relative",
+        text: "Non-relative",
         value: "Other non-relative"
-      }, 
+      },
       {
-        text:"Relative",
+        text: "Relative",
         value: "Other relative"
       }
     ]
   },
   {
-    title: 'Marital_status', 
+    title: 'Marital_status',
     name: "maritalStatus",
     type: "select",
     options: [
       {
         text: "Married/Living together",
         value: "Married/Living together"
-      }, 
+      },
       {
-        text:"Widowed",
+        text: "Widowed",
         value: "Widowed"
       },
       {
         text: "Single/Never Married",
         value: "Single/Never Married"
-      }, 
+      },
       {
-        text:"Divorced/Seperated",
+        text: "Divorced/Seperated",
         value: "Divorced/Seperated"
       }
     ]
   },
   {
-    title: 'Education Level', 
+    title: 'Education Level',
     name: "educationLevel",
     type: "select",
-    options: [     
+    options: [
       {
         text: "No formal education",
         value: "No formal education"
-      }, 
+      },
       {
-        text:"Vocational/Specialised training",
+        text: "Vocational/Specialised training",
         value: "Vocational/Specialised training"
       },
       {
         text: "Primary education",
         value: "Primary education"
-      }, 
+      },
       {
-        text:"Secondary education",
+        text: "Secondary education",
         value: "Secondary education"
-      }, 
+      },
       {
-        text:"Tertiary education",
+        text: "Tertiary education",
         value: "Tertiary education"
       }
     ]
   },
   {
-    title: 'Job Type', 
+    title: 'Job Type',
     name: "jobType",
     type: "select",
-    options: [     
+    options: [
       {
         text: "Government Dependent",
         value: "Government Dependent"
-      }, 
+      },
       {
-        text:"Formally employed (Government)",
+        text: "Formally employed (Government)",
         value: "Formally employed Government"
       },
       {
         text: "Formally employed (Private)",
         value: "Formally employed Private"
-      }, 
+      },
       {
-        text:"Informally employed",
+        text: "Informally employed",
         value: "Informally employed"
-      }, 
+      },
       {
-        text:"Self employed",
+        text: "Self employed",
         value: "Self employed"
       },
       {
         text: "Farming and Fishing",
         value: "Farming and Fishing"
-      }, 
+      },
       {
-        text:"Remittance Dependent",
+        text: "Remittance Dependent",
         value: "Remittance Dependent"
-      }, 
+      },
       {
-        text:"Other Income",
+        text: "Other Income",
         value: "Other Income"
-      }, 
+      },
       {
-        text:"No Income",
+        text: "No Income",
         value: "No Income"
       }
     ]
@@ -193,7 +194,7 @@ const FiaForm = () => {
 
   const [result, setResult] = useState<any>();
 
- 
+
   const handleSubmit = async (event: FormEvent): Promise<void> => {
     // Stop the form from submitting and refreshing the page.
     event.preventDefault()
@@ -215,13 +216,13 @@ const FiaForm = () => {
     }
 
     // Send the form data to prediction API and get a response.
-    const response = await getAcctPredction('http://localhost:5000/predict', reqBody)
+    const response = await getAcctPredction(`${apiServer}/account_prediction`, reqBody)
 
     // Save data if fetch is successful
     if (response) {
       setResult(response.data)
     }
-    
+
   }
 
   return (
@@ -247,7 +248,7 @@ const FiaForm = () => {
           }
         })}
 
-    
+
         <button
           type="submit"
           // className="btn-light hover:bg-gray-100"
@@ -257,22 +258,31 @@ const FiaForm = () => {
         </button>
       </form>
 
-      {result && 
+      {result &&
         <div className='grid text-gray-400 justify-center px-4 py-6'>
+          <p className='font-bold text-2xl pb-3'>Owns a bank account?</p>
           <div>
+            <span> Base Model: </span>
+            <span className='text-yellow-500 ml-2'> {result.base_model.prediction} </span>
+          </div>
+          <div>
+            <span> Optimized Model: </span>
+            <span className='text-yellow-500 ml-2'> {result.opt_model.prediction} </span>
+          </div>
+          {/* <div>
             <div> Base Model </div>
-            prediction:  <span className='text-yellow-500'> {result.base_model.prediction} </span>, 
-            probability: <span className='text-yellow-500'> {result.base_model.probablity} </span> 
+            prediction:  <span className='text-yellow-500'> {result.base_model.prediction} </span>,
+            probability: <span className='text-yellow-500'> {result.base_model.probablity} </span>
           </div>
           <div>
-            <div> Optimized Model </div>  
-            prediction:  <span className='text-yellow-500'> {result.opt_model.prediction} </span>, 
-            probability: <span className='text-yellow-500'> {result.opt_model.probablity} </span> 
-          </div>
+            <div> Optimized Model </div>
+            prediction:  <span className='text-yellow-500'> {result.opt_model.prediction} </span>,
+            probability: <span className='text-yellow-500'> {result.opt_model.probablity} </span>
+          </div> */}
         </div>
       }
 
-      
+
     </>
   );
 };
