@@ -64,6 +64,16 @@ const SiteData = function () {
     ],
     this.projects = [
       {
+        title: "AAPN Website",
+        imageSrc: "/aapn.png",
+        description: "Website design in WordPress(CMS)",
+        links: {
+          demo: "https://aapn.org.ng/",
+          repo: "#",
+        },
+        tags: "CMS - WordPress - MySQL - Bootstrap - HTML - CSS",
+      },
+      {
         title: "Financial inclusion africa",
         imageSrc: "/fia.png",
         description: "An end-to-end machine learning project to predict bank account ownership",
