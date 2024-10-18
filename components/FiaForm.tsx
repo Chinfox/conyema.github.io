@@ -5,6 +5,7 @@ import React, { useState, FormEvent } from 'react';
 import { FormSelect, FormInput, FormRadio } from './form-fields';
 import { getAcctPredction } from '@/utils';
 import apiServer from '@/config/index'
+import toast from 'react-hot-toast';
 
 
 const formFields = [
@@ -195,6 +196,8 @@ const FiaForm = () => {
   const [result, setResult] = useState<any>();
 
 
+
+
   const handleSubmit = async (event: FormEvent): Promise<void> => {
     // Stop the form from submitting and refreshing the page.
     event.preventDefault()
@@ -221,9 +224,38 @@ const FiaForm = () => {
     // Save data if fetch is successful
     if (response) {
       setResult(response.data)
+      showResult(response)
     }
 
   }
+
+  const showResult = (response: any) => {
+    
+
+      toast((t) => {
+        t.duration = 7000
+
+        return (
+          
+          <div className='grid justify-center px-4 py-6'>
+            <h6 className='font-bold pb-3 text-2xl'> {response.message} </h6>
+            {response.data &&
+              <div>
+                <p className='text-black pb-1'> Owns a bank account? </p>
+                <div>
+                  <span> Base Model: </span>
+                  <span className='font-bold text-yellow-800 ml-2'> {response.data.base_model.prediction} </span>
+                </div>
+                <div>
+                  <span> Optimized Model: </span>
+                  <span className='font-bold text-yellow-800 ml-2'> {response.data.opt_model.prediction} </span>
+                </div>
+              </div> 
+            }
+          </div>    
+        )
+      })
+  } 
 
   return (
     <>
@@ -252,37 +284,11 @@ const FiaForm = () => {
         <button
           type="submit"
           // className="btn-light hover:bg-gray-100"
-          className="btn-dark"
+          className="btn-dark text-2xl text-yellow-500"
         >
           Submit
         </button>
       </form>
-
-      {result &&
-        <div className='grid text-gray-400 justify-center px-4 py-6'>
-          <p className='font-bold text-2xl pb-3'>Owns a bank account?</p>
-          <div>
-            <span> Base Model: </span>
-            <span className='text-yellow-500 ml-2'> {result.base_model.prediction} </span>
-          </div>
-          <div>
-            <span> Optimized Model: </span>
-            <span className='text-yellow-500 ml-2'> {result.opt_model.prediction} </span>
-          </div>
-          {/* <div>
-            <div> Base Model </div>
-            prediction:  <span className='text-yellow-500'> {result.base_model.prediction} </span>,
-            probability: <span className='text-yellow-500'> {result.base_model.probablity} </span>
-          </div>
-          <div>
-            <div> Optimized Model </div>
-            prediction:  <span className='text-yellow-500'> {result.opt_model.prediction} </span>,
-            probability: <span className='text-yellow-500'> {result.opt_model.probablity} </span>
-          </div> */}
-        </div>
-      }
-
-
     </>
   );
 };

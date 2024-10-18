@@ -1,6 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { BottomNav } from '@/components'
+import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,7 +25,8 @@ export default function RootLayout({
           <BottomNav />
           <div className='page-content'>
             {/* <BottomNav /> */}
-      
+
+            <Toaster position="top-left"/>   
             {children}
             
           </div>
